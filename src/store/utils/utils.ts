@@ -5,3 +5,12 @@ export const parsePath = (path: string): string[] => {
             ?.map((segment) => segment.replace(/\[|\]/g, '')) || []
     );
 };
+
+export const parseValue = (value: string) => {
+    try {
+        return JSON.parse(value);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_) {
+        return value;
+    }
+};

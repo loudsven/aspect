@@ -31,3 +31,15 @@ export interface Button {
 }
 
 export type Part = 'content' | 'props' | `${number}`;
+
+export const isPanel = (item: ContentItem): item is Panel => {
+    return item.type === 'panel';
+};
+
+export const isLabel = (item: ContentItem): item is Label => {
+    return item.type === 'label';
+};
+
+export const isButton = (item: ContentItem): item is Button => {
+    return item.type === 'button';
+};
