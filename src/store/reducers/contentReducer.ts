@@ -4,8 +4,15 @@ import {
     UPDATE_CONTENT,
     UpdateContentAction,
 } from '../types/actions';
-import { ContentItem, ContentState, Part } from '../types/content';
-import { parsePath } from '../utils/utils';
+import {
+    ContentItem,
+    ContentState,
+    LastPart,
+    Parent,
+    Part,
+    Path,
+} from '../types/content';
+import { parsePath, parseValue } from '../utils/utils';
 
 const contentReducer = (state = initialState, action: ContentActionTypes) => {
     switch (action.type) {
@@ -22,26 +29,21 @@ const updateContent = (
 ): ContentState => {
     const { path, newValue } = payload;
 
-    return setValueAtPath(prevState, parsePath(path), newValue);
+    return setValueAtPath(prevState, parsePath(path), parseValue(newValue));
 };
 
 const setValueAtPath = (
     prevState: ContentState,
-    path: string[],
+    path: Path,
     newValue: string | ContentItem,
 ): ContentState => {
-    const stack = [...path];
+    const stack: Path = [...path];
+    const state = { ...prevState };
 
-    const state = Array.isArray(prevState) ? [...prevState] : { ...prevState };
-
-    let parent = state;
+    let parent: Parent = state;
 
     while (stack.length > 1) {
         const part: Part = stack.shift() as Part;
-
-        if (parent[part] === undefined) {
-            parent[part] = Array.isArray(parent) ? [] : {};
-        }
 
         parent[part] = Array.isArray(parent[part])
             ? [...parent[part]]
@@ -50,13 +52,13 @@ const setValueAtPath = (
         parent = parent[part];
     }
 
-    const lastPart = stack.shift();
+    const lastPart: LastPart = stack.shift() as LastPart;
 
     if (lastPart) {
         parent[lastPart] = newValue;
     }
 
-    return state as ContentState;
+    return state;
 };
 
 export default contentReducer;

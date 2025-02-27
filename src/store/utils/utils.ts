@@ -1,9 +1,9 @@
-export const parsePath = (path: string): string[] => {
-    return (
-        path
-            .match(/([a-zA-Z0-9_]+|\[\d+\])/g)
-            ?.map((segment) => segment.replace(/\[|\]/g, '')) || []
-    );
+import { Path } from '../types/content';
+
+export const parsePath = (path: string): Path => {
+    return (path
+        .match(/([a-zA-Z0-9_]+|\[\d+\])/g)
+        ?.map((segment) => segment.replace(/\[|\]/g, '')) || []) as Path;
 };
 
 export const parseValue = (value: string) => {

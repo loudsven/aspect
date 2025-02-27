@@ -30,13 +30,22 @@ export const initialState: ContentState = {
                                 visible: true,
                             },
                         },
+                        {
+                            type: 'button',
+                            props: {
+                                caption: 'Nested Button',
+                                width: 100,
+                                height: 40,
+                                visible: true,
+                            },
+                        },
                     ],
                 },
             ],
         },
         {
             type: 'label',
-            props: { caption: 'Main Label', visible: true },
+            props: { caption: 'test2', visible: true },
         },
         {
             type: 'button',

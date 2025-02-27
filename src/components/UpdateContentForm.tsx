@@ -7,9 +7,9 @@ interface UpdateContentFormProps {
 
 function UpdateContentForm(props: UpdateContentFormProps) {
     const { onApply } = props;
-    const [path, newPath] = useState('content[0].content[0]');
+    const [path, newPath] = useState('content[0].content[2].content[1]');
     const [newValue, setNewValue] = useState(
-        '{"type": "label", "props": {"caption": "new caption", "visible": true}}',
+        '{"type": "label", "props": {"caption": "New Label", "visible": true}}',
     );
 
     const handleApply = (formEvent: React.FormEvent<HTMLFormElement>) => {
