@@ -7,7 +7,7 @@ interface UpdateContentFormProps {
 
 function UpdateContentForm(props: UpdateContentFormProps) {
     const { onApply } = props;
-    const [path, newPath] = useState('content[0].content[2].content[1]');
+    const [path, setPath] = useState('content[0].content[2].content[1]');
     const [newValue, setNewValue] = useState(
         '{"type": "label", "props": {"caption": "New Label", "visible": true}}',
     );
@@ -20,7 +20,7 @@ function UpdateContentForm(props: UpdateContentFormProps) {
     const handlePathChange = (
         inputEvent: React.ChangeEvent<HTMLInputElement>,
     ) => {
-        newPath(inputEvent.target.value);
+        setPath(inputEvent.target.value);
     };
 
     const handleValueChange = (
