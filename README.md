@@ -6,6 +6,8 @@
 -   **label** со свойствами: caption, visible
 -   **button** со свойствами: caption, width, height, visible
 
+## Свойства
+
 -   width, height – число
 -   caption – текст
 -   visible – true/false
