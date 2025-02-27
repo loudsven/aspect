@@ -1,5 +1,15 @@
 # React + Redux + TypeScript + Vite
 
+## Элементы
+
+-   **panel** со свойствами: width, height, visible
+-   **label** со свойствами: caption, visible
+-   **button** со свойствами: caption, width, height, visible
+
+-   width, height – число
+-   caption – текст
+-   visible – true/false
+
 ## Задача:
 
 1. Задать начальный content, который будет включать в себя весь перечень элементов (включая вложенные) и отобразить его на экране.(`panel - <div> с рамкой`, `label - <span> c текстом`, `button - <button> с надписью`)соответственно с учетом размеров и видимости
